@@ -18,23 +18,24 @@ class SpotifyService
     {
         $this->client_id = env('SPOTIFY_CLIENT_ID');
         $this->client_secret = env('SPOTIFY_CLIENT_SECRET');
-        // $this->token = $this->getToken();
-        $this->token = 'BQCfGh-dxvIK77GbG2UmXg98doPZsqYc5oZCHJQ_HU0MBFPeokNmedQLHT3nAUR01btGIfdr2-yL1GlQfeIvqZyOZGA-RxkHzUL2cD7uFLvswa86Z_F5';
+        $this->token = $this->getToken();
     }
 
     public function getToken(): ?string
     {
         try {
-            $response = Http::withHeaders([
+            $http = Http::withHeaders([
                 'Content-Type' => 'application/x-www-form-urlencoded',
-            ])->post($this->token_url, [
+            ])->asForm()->post($this->token_url, [
+                'grant_type' => 'client_credentials',
                 'client_id' => $this->client_id,
                 'client_secret' => $this->client_secret,
-                'grant_type' => 'client_credentials',
-            ])->json();
+            ]);
+            
+            $response = $http->json();
             
             if (true === array_key_exists('error', $response)) {
-                throw new Exception($response['error_description']);
+                throw new Exception($response['error'] . ' - ' .$response['error_description']);
             }
 
             if (false === array_key_exists('access_token', $response)) {
@@ -61,13 +62,12 @@ class SpotifyService
                 'limit' => 1,
             ])->json();
 
-            // dd($response);
             if (false === array_key_exists('artists', $response)) {
                 throw new \Exception('Spotify API artists not found');
             }
 
             $artists = $response['artists'];
-            // dd($artists);
+            
             if (false === array_key_exists('items', $artists)) {
                 throw new Exception('Spotify API artists not found');
             }
