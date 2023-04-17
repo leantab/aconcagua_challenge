@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $service = new \App\Services\SpotifyService();
+    $artist = $service->searchForArtist('radiohead');
+    // dd($artist);
+    dd($service->getArtistAlbums($artist['id']));
 });

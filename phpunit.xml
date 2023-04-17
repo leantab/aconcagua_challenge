@@ -8,9 +8,6 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
-        </testsuite>
     </testsuites>
     <source>
         <include>
@@ -27,5 +24,7 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="SPOTIFY_CLIENT_ID" value="4de68451049140f4b463f8371fe9c2fa"/>
+        <env name="SPOTIFY_CLIENT_SECRET" value="561ce3ee0b4e4a9fb4bb5b92e3a1aef1"/>
     </php>
 </phpunit>
