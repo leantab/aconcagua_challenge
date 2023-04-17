@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SpotifyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $service = new \App\Services\SpotifyService();
-    $artist = $service->searchForArtist('radiohead');
-    // dd($artist);
-    dd($service->getArtistAlbums($artist['id']));
-});
+Route::get('/', [SpotifyController::class, 'index']);
+Route::get('/albums', [SpotifyController::class, 'albums']);

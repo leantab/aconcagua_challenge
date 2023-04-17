@@ -19,7 +19,7 @@ class SpotifyService
         $this->client_id = env('SPOTIFY_CLIENT_ID');
         $this->client_secret = env('SPOTIFY_CLIENT_SECRET');
         // $this->token = $this->getToken();
-        $this->token = 'BQAp3Kn6n1SHX3ca3WxTt6VBS1glz-lV4t9OncsFCOC81iVsBwCCwp64ghMpM_hs5UPQ2cpHtROV4sPzL-ee9yxOG56MQ9wkXSe69_Ib4v-S376V_vbT';
+        $this->token = 'BQCfGh-dxvIK77GbG2UmXg98doPZsqYc5oZCHJQ_HU0MBFPeokNmedQLHT3nAUR01btGIfdr2-yL1GlQfeIvqZyOZGA-RxkHzUL2cD7uFLvswa86Z_F5';
     }
 
     public function getToken(): ?string
