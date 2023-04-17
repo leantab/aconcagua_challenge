@@ -21,6 +21,12 @@ class SpotifyService
         $this->token = $this->getToken();
     }
 
+    public function handleAlbumSearch($artist): array
+    {
+        $artist = $this->searchForArtist('radiohead');
+        return $this->getArtistAlbums($artist['id']);
+    }
+
     public function getToken(): ?string
     {
         try {

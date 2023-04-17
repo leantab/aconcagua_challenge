@@ -1,2 +1,2 @@
-# aconcagua_challenge
-Spotify API challenge for Aconcagua Software
+# API test
+Spotify API assesment for Aconcagua Software

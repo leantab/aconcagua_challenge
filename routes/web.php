@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SpotifyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SpotifyController::class, 'index']);
-Route::get('/albums', [SpotifyController::class, 'albums']);
+Route::get('/', function () {
+    return view('welcome');
+});

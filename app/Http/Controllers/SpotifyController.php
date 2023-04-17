@@ -11,9 +11,9 @@ class SpotifyController extends Controller
 {
     public function index()
     {
-        $service = new SpotifyService();
-        $artist = $service->searchForArtist('radiohead');
-        dd($service->getArtistAlbums($artist['id']));
+        // $service = new SpotifyService();
+        // $artist = $service->searchForArtist('radiohead');
+        // dd($service->getArtistAlbums($artist['id']));
     }
 
     public function albums(Request $request): JsonResource
@@ -23,7 +23,8 @@ class SpotifyController extends Controller
         ]);
 
         $service = new SpotifyService();
-        $artist = $service->searchForArtist($request->q);
-        return SpotifyAlbumResource::collection($service->getArtistAlbums($artist['id']) ?? []);
+        return SpotifyAlbumResource::collection(
+            $service->handleAlbumSearch($request->q)
+        );
     }
 }
