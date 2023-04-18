@@ -23,7 +23,7 @@ class SpotifyService
 
     public function handleAlbumSearch($artist): array
     {
-        $artist = $this->searchForArtist('radiohead');
+        $artist = $this->searchForArtist($artist);
         return $this->getArtistAlbums($artist['id']);
     }
 
