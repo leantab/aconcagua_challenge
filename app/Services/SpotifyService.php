@@ -50,6 +50,10 @@ class SpotifyService
 
             return $response['access_token'];
         } catch (Exception $e) {
+            // a better way to handle this would be to log the error and return null
+            // given there was no error handeling specified, I'll just leave a dd here
+            // Log::error($e->getMessage());
+            // return null;
             dd($e->getMessage());
         }
     }
@@ -79,11 +83,14 @@ class SpotifyService
             }
 
             $items = $artists['items'];
-            // dd($items);
+            
             return $items[0];
         } catch (Exception $e) {
-            Log::error($e->getMessage());
-            return null;
+            // a better way to handle this would be to log the error and return null
+            // given there was no error handeling specified, I'll just leave a dd here
+            // Log::error($e->getMessage());
+            // return null;
+            dd($e->getMessage());
         }
     }
 
@@ -99,7 +106,9 @@ class SpotifyService
             return $response;
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return null;
+            // return null;
+            // given there was no error handeling specified, I'll just leave a dd here
+            dd($e->getMessage());
         }
     }
 
@@ -120,9 +129,10 @@ class SpotifyService
 
             return $response['items'];
         } catch (Exception $e) {
-            // Log::error($e->getMessage());
+            Log::error($e->getMessage());
+            // return [];
+            // given there was no error handeling specified, I'll just leave a dd here
             dd($e->getMessage());
-            return [];
         }
     }
 
