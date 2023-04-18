@@ -9,13 +9,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class SpotifyController extends Controller
 {
-    public function index()
-    {
-        // $service = new SpotifyService();
-        // $artist = $service->searchForArtist('radiohead');
-        // dd($service->getArtistAlbums($artist['id']));
-    }
-
     public function albums(Request $request): JsonResource
     {
         $request->validate([
